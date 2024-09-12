@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h2> Task Detail </h2>
+    <p><strong>Title:</strong>{{ task.title }}</p>
+    <p><strong>Description:</strong>{{ task.description}}</p>
+    <p><strong>Due Date:</strong>{{ task.due_date }}</p>
+    <p><strong>Priority:</strong>{{ task.priority }}</p>
+    <p><strong>Status:</strong>
+    
+        {% if task.completed %}
+        <span style="color: green;"> Completed </span>
+        {% else %}
+        <span style="color: red;"> Pending </span>
+        {% endif %}
+    </p>
+
+    <a href="{% url 'task_edit' task.pk %}"> Edit </a>
+    <a href="{% url 'task_delete' task.pk %}"> Delete </a>
+    <a href="{% url 'task_list' %}"> Back to Task List </a>
+</div>
+
+{% endblock content %}
